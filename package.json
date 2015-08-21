@@ -1,0 +1,12 @@
+{
+	"version": "1.0.0",
+	"name": "mindfor-prerender",
+	"description": "Provides pages prerender via Zombie.js",
+	"private": true,
+	
+	"main": "server.js",
+	"dependencies": {
+		"zombie": "^4.0.13",
+		"node-cache": "^3.0.0"
+	}
+}
