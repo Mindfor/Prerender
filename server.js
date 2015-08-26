@@ -87,7 +87,10 @@ function handleServer(request, response) {
 		})
 		.catch(function (error) {
 			response.writeHead(500);
-			response.end(error.name + ", code " + error.code);
+			response.write(error.toString());
+			if (error.stack)
+				response.write(error.stack);
+			response.end();
 			console.error("ERROR %s, elapsed %dms", url.href, Date.now() - start);
 			browser.destroy();
 		});
