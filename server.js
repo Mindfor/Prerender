@@ -1,3 +1,4 @@
+/* global length */
 "use strict"
 const Http = require("http");
 const Url = require("url");
@@ -24,13 +25,20 @@ Browser.silent = true;
 Browser.waitDuration = "30s";
 Browser.userAgent = "Mozilla/5.0 Chrome/10.0.613.0 Safari/534.15 PrerenderBot";
 const pipelineDefault = Browser.Pipeline._default;
-for (let i=0; i<pipelineDefault.length; i++) {
+for (let i = 0; i < pipelineDefault.length; i++) {
 	// remove redirection
 	if (pipelineDefault[i].name == "handleRedirect") {
 		pipelineDefault.splice(i, 1);
 		break;
 	}
 }
+
+Browser.extend(function (browser) {
+	// matchMedia stub
+	browser.on("opened", function (window) {
+		window.matchMedia = window.matchMedia || matchMediaStub;
+	});
+});
 
 // configure resources cache
 const cache = new NodeCache({ stdTTL: 300 });
@@ -71,7 +79,7 @@ function handleServer(request, response) {
 	
 	// create browser
 	const browser = new Browser();
-	browser.pipeline.addHandler(function(browser, request) {
+	browser.pipeline.addHandler(function (browser, request) {
 		return handleBrowserRequest(request, defaultSkipResource);
 	});
 	//browser.debug();
@@ -100,7 +108,7 @@ function handleServer(request, response) {
 function handleBrowserVisit(url, browser, response) {
 	let status = browser.status;
 	const headers = browser.response.headers;
-	
+
 	const resultUrl = Url.parse(browser.url);
 	resultUrl.hostAndPath = getHostAndPath(resultUrl);
 	url.hostAndPath = getHostAndPath(url);
@@ -117,7 +125,7 @@ function handleBrowserVisit(url, browser, response) {
 		const baseUrl = url.href.substr(0, url.href.length - url.path.length);
 		if (redirectUrl.startsWith(baseUrl))
 			redirectUrl = redirectUrl.substr(baseUrl.length);
-		
+
 		response.writeHead(302, {
 			"Location": redirectUrl
 		});
@@ -125,6 +133,8 @@ function handleBrowserVisit(url, browser, response) {
 	}
 	// handle other
 	else {
+		removeTags(browser.document, "script");
+		removeTags(browser.document, "noscript");
 		response.writeHead(status, browser.response.statusText, {
 			"Content-Type": headers.get("Content-Type")
 		});
@@ -173,4 +183,20 @@ function getHostAndPath(url) {
 	return url.search
 		? url.href.substr(0, url.href.length - url.search.length)
 		: url.href;
+}
+
+function matchMediaStub() {
+	return {
+		matches: false,
+		addListener: function () { },
+		removeListener: function () { }
+	};
+}
+
+function removeTags(document, tagName) {
+	const tags = document.getElementsByTagName(tagName);
+	for (let i = 0; i < tags.length; i++) {
+		const tag = tags[i];
+		tag.parentNode.removeChild(tag);
+	}
 }
