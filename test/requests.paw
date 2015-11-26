@@ -5,12 +5,12 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>879DCE7F-A9D9-48E9-BF51-E5AA5C315A42</UUID>
-        <nextObjectID>123</nextObjectID>
+        <nextObjectID>131</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
                     <key>NSPersistenceFrameworkVersion</key>
-                    <integer>638</integer>
+                    <integer>640</integer>
                     <key>NSStoreModelVersionHashes</key>
                     <dict>
                         <key>LMCookieJar</key>
@@ -100,24 +100,24 @@
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">host</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z107"></relationship>
-        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z121 z102"></relationship>
+        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z102 z131 z121"></relationship>
     </object>
     <object type="LMENVIRONMENTDOMAIN" id="z107">
         <attribute name="uuid" type="string">C8D7B704-647D-4203-8045-4F314ABFCA8C</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">Default Domain</attribute>
-        <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z108 z122"></relationship>
-        <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE" idrefs="z110 z106"></relationship>
+        <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z122 z129 z108"></relationship>
+        <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE" idrefs="z106 z110"></relationship>
     </object>
     <object type="LMENVIRONMENT" id="z108">
         <attribute name="uuid" type="string">ED7AFBBA-AA63-401D-8720-358D61EE940E</attribute>
         <attribute name="order" type="int64">0</attribute>
-        <attribute name="name" type="string">localhost</attribute>
+        <attribute name="name" type="string">local-local</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z107"></relationship>
-        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z109 z102"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z102 z109"></relationship>
     </object>
     <object type="LMENVIRONMENTVARIABLEVALUE" id="z109">
-        <attribute name="value" type="string">https://tabletkin.info</attribute>
+        <attribute name="value" type="string">http://10.211.55.10:5000</attribute>
         <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z108"></relationship>
         <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z110"></relationship>
     </object>
@@ -126,7 +126,7 @@
         <attribute name="order" type="int64">1</attribute>
         <attribute name="name" type="string">base-url</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z107"></relationship>
-        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z123 z109"></relationship>
+        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z123 z130 z109"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z111">
         <attribute name="value" type="string"></attribute>
@@ -138,39 +138,6 @@
         <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z105"></relationship>
     </object>
-    <object type="LMKEYVALUE" id="z112">
-        <attribute name="value" type="string">[{"data":{"environmentVariable":"FA53FA30-1D1D-4468-8D44-2588883FF391"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">0</attribute>
-        <attribute name="name" type="string">Base-Url</attribute>
-        <attribute name="enabled" type="bool">1</attribute>
-        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z113"></relationship>
-    </object>
-    <object type="LMREQUEST" id="z113">
-        <attribute name="uuid" type="string">500A2E3B-B5E0-4A02-B591-B8A4742F67CE</attribute>
-        <attribute name="url" type="string">[{"data":{"environmentVariable":"E666EB5A-98CC-4C12-A229-36D2E4706138"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/tyumen"]</attribute>
-        <attribute name="storecookies" type="bool">1</attribute>
-        <attribute name="sendcookies" type="bool">1</attribute>
-        <attribute name="redirectmethod" type="bool">0</attribute>
-        <attribute name="redirectauthorization" type="bool">0</attribute>
-        <attribute name="method" type="string">GET</attribute>
-        <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">1</attribute>
-        <attribute name="name" type="string">Tyumen</attribute>
-        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z112 z114"></relationship>
-    </object>
-    <object type="LMKEYVALUE" id="z114">
-        <attribute name="order" type="int64">1</attribute>
-        <attribute name="enabled" type="bool">1</attribute>
-        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z113"></relationship>
-    </object>
     <object type="LMKEYVALUE" id="z115">
         <attribute name="order" type="int64">1</attribute>
         <attribute name="enabled" type="bool">1</attribute>
@@ -181,18 +148,18 @@
     </object>
     <object type="LMREQUEST" id="z116">
         <attribute name="uuid" type="string">1607B0FA-D5DA-41A9-A4D2-662CFF5A5AC4</attribute>
-        <attribute name="url" type="string">[{"data":{"environmentVariable":"E666EB5A-98CC-4C12-A229-36D2E4706138"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/tyumen\\/pharmacies"]</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"E666EB5A-98CC-4C12-A229-36D2E4706138"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/pharmacies"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">3</attribute>
+        <attribute name="order" type="int64">1</attribute>
         <attribute name="name" type="string">Pharmacies</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z119 z117"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z117 z125"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z117">
         <attribute name="value" type="string">[{"data":{"environmentVariable":"FA53FA30-1D1D-4468-8D44-2588883FF391"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
@@ -206,7 +173,7 @@
     </object>
     <object type="LMREQUEST" id="z118">
         <attribute name="uuid" type="string">39032459-3E1F-4115-A86A-0246B0CC8FE9</attribute>
-        <attribute name="url" type="string">[{"data":{"environmentVariable":"E666EB5A-98CC-4C12-A229-36D2E4706138"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/tyumen\\/trade-names\\/18"]</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"E666EB5A-98CC-4C12-A229-36D2E4706138"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/drugs\\/azitroks\\/forms\\/10"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -217,15 +184,7 @@
         <attribute name="name" type="string">TradeName</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z120 z115"></relationship>
-    </object>
-    <object type="LMKEYVALUE" id="z119">
-        <attribute name="order" type="int64">1</attribute>
-        <attribute name="enabled" type="bool">1</attribute>
-        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z116"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z120 z124 z115"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z120">
         <attribute name="value" type="string">[{"data":{"environmentVariable":"FA53FA30-1D1D-4468-8D44-2588883FF391"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
@@ -244,14 +203,51 @@
     </object>
     <object type="LMENVIRONMENT" id="z122">
         <attribute name="uuid" type="string">4A0667F8-62A7-400F-9D40-98C93A71983C</attribute>
-        <attribute name="order" type="int64">1</attribute>
+        <attribute name="order" type="int64">2</attribute>
         <attribute name="name" type="string">azure</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z107"></relationship>
-        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z121 z123"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z123 z121"></relationship>
     </object>
     <object type="LMENVIRONMENTVARIABLEVALUE" id="z123">
-        <attribute name="value" type="string">https://tabletkin.info</attribute>
+        <attribute name="value" type="string">https://web-dev.tabletkin.info</attribute>
         <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z122"></relationship>
         <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z110"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z124">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">2</attribute>
+        <attribute name="name" type="string"></attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z118"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z125">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">2</attribute>
+        <attribute name="name" type="string"></attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z116"></relationship>
+    </object>
+    <object type="LMENVIRONMENT" id="z129">
+        <attribute name="uuid" type="string">E2EB1DEF-7631-4999-9C26-9C85470A7C29</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">local-dev</attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z107"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z130 z131"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z130">
+        <attribute name="value" type="string">https://web-dev.tabletkin.info</attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z129"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z110"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z131">
+        <attribute name="value" type="string">http://localhost:8080</attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z129"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z106"></relationship>
     </object>
 </database>

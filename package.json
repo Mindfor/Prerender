@@ -6,7 +6,7 @@
 	
 	"main": "server.js",
 	"dependencies": {
-		"zombie": "^4.0.13",
+		"zombie": "^4.2.1",
 		"node-cache": "^3.0.0"
 	}
 }
