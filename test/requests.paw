@@ -138,14 +138,6 @@
         <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z105"></relationship>
     </object>
-    <object type="LMKEYVALUE" id="z115">
-        <attribute name="order" type="int64">1</attribute>
-        <attribute name="enabled" type="bool">1</attribute>
-        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
-        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z118"></relationship>
-    </object>
     <object type="LMREQUEST" id="z116">
         <attribute name="uuid" type="string">1607B0FA-D5DA-41A9-A4D2-662CFF5A5AC4</attribute>
         <attribute name="url" type="string">[{"data":{"environmentVariable":"E666EB5A-98CC-4C12-A229-36D2E4706138"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/pharmacies"]</attribute>
@@ -184,7 +176,7 @@
         <attribute name="name" type="string">TradeName</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z120 z124 z115"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z124 z120"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z120">
         <attribute name="value" type="string">[{"data":{"environmentVariable":"FA53FA30-1D1D-4468-8D44-2588883FF391"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
@@ -204,7 +196,7 @@
     <object type="LMENVIRONMENT" id="z122">
         <attribute name="uuid" type="string">4A0667F8-62A7-400F-9D40-98C93A71983C</attribute>
         <attribute name="order" type="int64">2</attribute>
-        <attribute name="name" type="string">azure</attribute>
+        <attribute name="name" type="string">azure-dev</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z107"></relationship>
         <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z123 z121"></relationship>
     </object>
